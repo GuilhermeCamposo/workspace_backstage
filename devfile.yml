@@ -1,0 +1,28 @@
+schemaVersion: 2.2.2
+metadata:
+  name: backstage-dev
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi10-latest
+      endpoints:
+        - exposure: public
+          name: nodejs
+          protocol: https
+          targetPort: 3000
+      memoryLimit: 1Gi
+      memoryRequest: 512Mi
+      cpuLimit: '0.5'
+      cpuRequest: '0.25'
+      mountSources: true
+      volumeMounts:
+        - name: npm
+          path: /home/user/.npm
+        - name: yarn
+          path: /home/user/.yarn          
+  - name: npm
+    volume:
+      size: 1G
+  - name: yarn
+    volume:
+      size: 1G      
