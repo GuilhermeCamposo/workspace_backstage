@@ -16,13 +16,8 @@ components:
       cpuRequest: '0.25'
       mountSources: true
       volumeMounts:
-        - name: npm
-          path: /home/user/.npm
         - name: yarn
           path: /home/user/.yarn          
-  - name: npm
-    volume:
-      size: 1G
   - name: yarn
     volume:
       size: 1G      
